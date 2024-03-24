@@ -1,4 +1,4 @@
-str1  = 'my  namayewaa is deepankar'
+str1  = 'my namayewaa is deepankar'
 str2 = ""
 for i in range (len(str1)):
     if str1[i]==' ':

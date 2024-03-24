@@ -1,3 +1,4 @@
+#writting in binary file.
 import pickle
 fon  = open('test.dat' , 'wb')
 try :
@@ -9,7 +10,8 @@ try :
         pickle.dump(dat,fon)
 except Exception:
     fon.close()
-    
+
+#reading a binary file    
 font = open('test.dat','rb')
 try :
     while True:
@@ -17,7 +19,8 @@ try :
         print(con)
 except Exception:
     font.close()
-    
+
+#searching in a binary file    
 t = open('test.dat' , 'rb')
 rol = int(input('enter roll...'))
 new_name = input('enter name...')
