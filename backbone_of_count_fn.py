@@ -47,7 +47,7 @@ while True:
         break
 print(list2)
 
-
+print("this is how count() fn works")
 
 
 
