@@ -16,4 +16,6 @@ def pass_cracker():
             check += i
     if check == pas:
         print("THIS IS YOUR PASSWORD--------->",check)
+    else:
+        print("Invalid password!!!")
 pass_cracker()
