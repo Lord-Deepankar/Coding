@@ -1,3 +1,4 @@
+#                                                    METHOD 1
 str1 = "aaabbcccdd"
 def splitting(str1):
     list= []
@@ -48,3 +49,30 @@ while True:
 print(list2)
 
 print("this is how count() fn works")
+ 
+#                                                    METHOD 2
+
+text = str(input("Enter your string: "))
+def count_new(text):
+    list1 = sorted(list(text))
+    p1  = 0
+    p2 = 1
+    while p2 < len(list1):
+        if list1[p1] != list1[p2]:
+            list1.insert(p2,":")
+            p1 += 2
+            p2 += 2
+        else:
+            p1 += 1
+            p2 += 1
+            continue
+
+    str2 = "".join(list1)   
+    list2 = str2.split(":")
+    for i in list2:
+        print(f"{i[0]} in string TEXT is {len(i)}")
+
+count_new(text)
+
+print("This is how count() fn works without specific char argument")
+
