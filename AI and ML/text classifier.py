@@ -103,21 +103,93 @@ for _ in range(150):
 # Shuffle to simulate real-world randomness
 combined = list(zip(texts, labels))
 random.shuffle(combined)
+texts, labels = map(list, zip(*combined))
+
+# Add confusing non-tech samples
+confusing_non_tech = [
+    "I love animals",
+    "I love mangoes",
+    "My favorite fruit is mango",
+    "I enjoy long walks",
+    "I like reading books",
+    "I love painting in my free time",
+    "I love dogs",
+    "Nature is so calming",
+    "I enjoy sunsets",
+    "I love my plants"
+]
+
+for s in confusing_non_tech:
+    if random.random() < 0.3:
+        s = s.replace("mango", random.choice(noisy_words))  # optional confusion
+        s += " " + random.choice(noisy_endings)
+    texts.append(s)
+    labels.append("non-tech")
+
+# Shuffle again
+combined = list(zip(texts, labels))
+random.shuffle(combined)
 texts, labels = zip(*combined)
 
 
-def accu(texts, labels , rnd):
-    vectorizer = TfidfVectorizer()
-    x = vectorizer.fit_transform(texts)      #creates a matrix of words and it's count in dataset
+#def accu(texts, labels , rnd):
+#    vectorizer = TfidfVectorizer()
+#    x = vectorizer.fit_transform(texts)      #creates a matrix of words and it's count in dataset
 
-    x_train , x_test , y_train , y_test = train_test_split(x , labels , test_size=0.2,random_state=rnd )
-    model = MultinomialNB()
-    model.fit(x_train , y_train)
+#    x_train , x_test , y_train , y_test = train_test_split(x , labels , test_size=0.2,random_state=rnd )
+#    model = MultinomialNB()
+#    model.fit(x_train , y_train)
 
-    y_pred = model.predict(x_test)
-    accuracy = accuracy_score(y_test , y_pred)
-    print(f"Accuracy: {accuracy}")
+#    y_pred = model.predict(x_test)
+#    accuracy = accuracy_score(y_test , y_pred)
+#    print(f"Accuracy: {accuracy}")
 
-for i in range(0,50):
-    accu(texts, labels,i)
+#for i in range(0,10):
+#    accu(texts, labels,i)
+
+
+
+
+#Training Model
+# stop_words filters words like 'is', 'that'
+# lowercase=True makes all characters lowercase
+# ngram_range=(1,2) learns both unigrams and bigrams
+vectorizer = TfidfVectorizer(
+    stop_words='english',
+    lowercase=True,
+    ngram_range=(1, 2)
+)
+x =  vectorizer.fit_transform(texts)
+x_train , x_test , y_train , y_test = train_test_split(x , labels , test_size=0.2 , random_state = 42)
+model = MultinomialNB()
+model.fit(x_train , y_train)
+
+#User Input  
+user_input = str(input("Enter your sentence: "))
+input = [user_input]
+X = vectorizer.transform(input)
+Ypred = model.predict(X)
+probs = model.predict_proba(X)[0] 
+conf = str(round(max(probs)*100, 2))
+if float(conf) < 55:
+    print(f"{Ypred} but NOT SURE")
+else:
+    print(f"Prediction: {Ypred[0]}")
+    print(f"Confidence: {round(max(probs)*100, 2)}%")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
