@@ -36,6 +36,17 @@ def main():
                     print(f"{list1[1]}: not found")
         elif list1[0] == "pwd":
             print(os.getcwd())
+        
+        elif list1[0] == 'cd':
+            def cd():
+                new_dir = list1[1]
+                if ".." in list1[1] :
+                    os.chdir('..')
+                else:
+                    os.chdir(new_dir)
+                print((f'current direcotry is {os.getcwd()}'))
+            cd()
+
         else:# list1[0] == "custom_exe_1234":
 
 
