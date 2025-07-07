@@ -44,7 +44,7 @@ def main():
                     os.chdir('..')
                 else:
                     os.chdir(new_dir)
-                print((f'current direcotry is {os.getcwd()}'))
+                print((f'current direcotry is set to {os.getcwd()}'))
             cd()
 
         else:# list1[0] == "custom_exe_1234":
