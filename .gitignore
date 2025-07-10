@@ -1,6 +1,8 @@
 # AGENT.md - AI assistant configuration
 AGENT.md
 
+# .env file
+.env
 # Python
 __pycache__/
 *.py[cod]
