@@ -134,7 +134,7 @@ texts, labels = zip(*combined)
 
 #def accu(texts, labels , rnd):
 #    vectorizer = TfidfVectorizer()
-#    x = vectorizer.fit_transform(texts)      #creates a matrix of words and it's count in dataset
+#    x = vectorizer.fit_transform(texts)  #creates a matrix of sentences and count of it's individual words in dataset
 
 #    x_train , x_test , y_train , y_test = train_test_split(x , labels , test_size=0.2,random_state=rnd )
 #    model = MultinomialNB()
