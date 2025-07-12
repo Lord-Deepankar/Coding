@@ -9,10 +9,11 @@ def main():
     for i in range(0,20):
         sys.stdout.write("$ ")
         command = input() 
-        list1 = command.split(" ")       
+        list1 = command.split(" ")    
         if command == "exit 0":
             break
-        elif list1[0] == "echo":            
+        elif list1[0] == "echo":   
+            print(list1)         
             str1 = ""
             for i in range(1,len(list1)):
                 str1 = str1 + list1[i] + " "
@@ -34,20 +35,36 @@ def main():
                         break
                 if found == False:
                     print(f"{list1[1]}: not found")
-        elif list1[0] == "pwd":
+        elif list1[0] == "pwd":                # added pwd functions
             print(os.getcwd())
         
-        elif list1[0] == 'cd':
+        elif list1[0] == 'cd':                 # added cd functions
             def cd():
                 new_dir = list1[1]
-                if ".." in list1[1] :
-                    os.chdir('..')
-                else:
-                    os.chdir(new_dir)
-                print((f'current direcotry is set to {os.getcwd()}'))
+                try:
+                    if ".." in list1[1] :
+                        os.chdir('..')
+                        print((f'current directory is set to {os.getcwd()}'))
+                    elif '~' in list1[1]:
+                        os.chdir(os.path.expanduser('~'))
+                        print((f'current directory is set to home ----> {os.getcwd()}'))
+                    else:
+                        os.chdir(new_dir)
+                        print((f'current directory is set to {os.getcwd()}'))
+                except FileNotFoundError:
+                    print(f"No such file or directory as ----> {new_dir}")
+                except Exception as e:
+                    print(f"An error occured: {e}")
             cd()
 
-        else:# list1[0] == "custom_exe_1234":
+        elif list1[0] == 'cat':                 # added cat functionality to shell
+            for i in range(1,len(list1)):
+                if os.path.exists(list1[i]):
+                    subprocess.Popen(["notepad" , list1[i]])
+                else:
+                    print(f"file doesn't exit on this ----> {os.getcwd()}")
+
+        else:                               # list1[0] == "custom_exe_1234":
 
 
             new_path = os.environ.get("PATH")
