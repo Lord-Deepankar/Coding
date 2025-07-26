@@ -1,6 +1,7 @@
 # AGENT.md - AI assistant configuration
 AGENT.md
-
+#background config file of extension
+background.js
 # .env file
 .env
 # Python
