@@ -1,7 +1,7 @@
 import sys
 import os
 import subprocess
-
+import re
 
 def main():
     
@@ -9,15 +9,48 @@ def main():
     for i in range(0,20):
         sys.stdout.write("$ ")
         command = input() 
-        list1 = command.split(" ")    
+        list1 = command.split(" ")  
+
+
         if command == "exit 0":
             break
+
+
         elif list1[0] == "echo":   
-            print(list1)         
-            str1 = ""
-            for i in range(1,len(list1)):
-                str1 = str1 + list1[i] + " "
-            print(str1)
+
+            user_input = command
+
+            inp = "".join(user_input.split("echo ")[1:])
+
+
+            def jn(array):
+                result =  " ".join(array)
+                print(result)
+
+
+
+            if '""' in inp and '" "' in inp:
+                array = re.split(r'[""," "]+',inp)
+                jn(array)
+
+
+            elif '""' in inp:
+                array = inp.split('""')
+                jn(array)
+
+
+            elif '" "' in inp:
+                array = inp.split('" "')
+                jn(array)
+
+
+            else:
+                list2 = inp.split()
+                jn(list2)
+
+
+
+
         elif list1[0] == "type":
             if list1[1] in ["echo","type","exit"]:
                 print(list1[1],"is a shell builtin")
@@ -35,9 +68,12 @@ def main():
                         break
                 if found == False:
                     print(f"{list1[1]}: not found")
+
+
         elif list1[0] == "pwd":                # added pwd functions
             print(os.getcwd())
         
+
         elif list1[0] == 'cd':                 # added cd functions
             def cd():
                 new_dir = list1[1]
@@ -57,12 +93,14 @@ def main():
                     print(f"An error occured: {e}")
             cd()
 
+
         elif list1[0] == 'cat':                 # added cat functionality to shell
             for i in range(1,len(list1)):
                 if os.path.exists(list1[i]):
                     subprocess.Popen(["notepad" , list1[i]])
                 else:
                     print(f"file doesn't exit on this ----> {os.getcwd()}")
+
 
         else:                               # list1[0] == "custom_exe_1234":
 
