@@ -51,8 +51,8 @@ sudo dnf install python3 python3-pyinotify gcc
 
 ```bash
 # Clone or download
-git clone <your-repo-url>
-cd btrfs_file_searcher
+git clone https://github.com/Lord-Deepankar/Coding.git
+cd btrfs-lightning-search  #if this doesn't work then do,  "cd Coding" then "cd btrfs-lightning-search"
 
 # Run installation script
 sudo ./install.sh
