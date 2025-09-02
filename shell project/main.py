@@ -20,7 +20,19 @@ def main():
 
             user_input = command
 
-            inp = "".join(user_input.split("echo ")[1:])
+            inp1 = "".join(user_input.split("echo ")[1:])
+            
+            #inp is the main input for processing
+
+            if inp1[0] == "'" and inp1[-1] == "'":
+                inp = inp1.replace("'","")
+            
+            elif '//' in inp1:
+                inp = inp1.replace('//','/')
+
+            else:
+                inp = inp1.replace("/"," ") 
+
 
 
             def jn(array):
@@ -76,7 +88,9 @@ def main():
 
         elif list1[0] == 'cd':                 # added cd functions
             def cd():
-                new_dir = list1[1]
+                # uses .join() to conjugate the seprated parts of a directory into one due to split() on main command
+                new_dir = " ".join(list1[1:])  # avoiding the double quotes, just write the foler name with spaces 
+
                 try:
                     if ".." in list1[1] :
                         os.chdir('..')
