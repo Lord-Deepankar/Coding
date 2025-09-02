@@ -1,0 +1,30 @@
+[Unit]
+Description=Btrfs File Indexer inotify Daemon
+Documentation=https://github.com/user/btrfs_file_searcher
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/home/xero/Documents/Dict_project/btrfs_file_searcher
+ExecStart=/usr/bin/python3 /home/xero/Documents/Dict_project/btrfs_file_searcher/inotify_daemon.py
+Restart=always
+RestartSec=10
+
+# Security settings
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/xero/Documents/Dict_project/btrfs_file_searcher
+
+# Environment
+Environment=PYTHONUNBUFFERED=1
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=btrfs-indexer
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,39 @@
+{
+  "watch_paths": [
+    "/home/xero"
+  ],
+  "database_path": "file_index.db",
+  "exclude_patterns": [
+    "*.tmp",
+    "*.swp",
+    "*~",
+    ".git/*",
+    "__pycache__/*",
+    "*.pyc",
+    ".cache/*",
+    ".local/share/Trash/*",
+    ".thumbnails/*",
+    ".mozilla/*/Cache/*",
+    ".chromium/*/Cache/*",
+    ".steam/*",
+    "node_modules/*",
+    ".npm/*",
+    ".yarn/*",
+    "*.log",
+    "*.pid",
+    ".docker/*",
+    ".gradle/*",
+    ".m2/*"
+  ],
+  "max_depth": 15,
+  "batch_size": 100,
+  "log_level": "INFO",
+  "stats_interval": 300,
+  "exclude_directories": [
+    "/proc",
+    "/sys",
+    "/dev",
+    "/run",
+    "/tmp"
+  ]
+}

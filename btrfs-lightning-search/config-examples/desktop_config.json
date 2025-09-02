@@ -1,0 +1,20 @@
+{
+  "watch_paths": [
+    "/home"
+  ],
+  "database_path": "~/.local/share/btrfs-search/file_index.db",
+  "exclude_patterns": [
+    "*.tmp", "*.swp", "*~",
+    ".git/*", "__pycache__/*", "*.pyc",
+    ".cache/*", ".local/share/Trash/*",
+    ".thumbnails/*", 
+    ".mozilla/*/Cache/*",
+    ".chromium/*/Cache/*",
+    ".steam/steamapps/*",
+    ".local/share/Steam/steamapps/*"
+  ],
+  "max_depth": 10,
+  "batch_size": 100,
+  "log_level": "WARNING",
+  "stats_interval": 600
+}

@@ -1,0 +1,34 @@
+{
+  "watch_paths": [
+    "/home", 
+    "/var/www",
+    "/opt",
+    "/srv"
+  ],
+  "database_path": "/var/lib/btrfs-search/file_index.db",
+  "exclude_patterns": [
+    "*.tmp", "*.swp", "*~", "*.bak",
+    ".git/*", ".svn/*", ".hg/*",
+    "__pycache__/*", "*.pyc", "*.pyo",
+    ".cache/*", ".local/share/Trash/*",
+    "node_modules/*", ".npm/*", ".yarn/*",
+    ".docker/*", ".gradle/*", ".m2/*",
+    "*.log", "*.pid", "*.lock",
+    ".thumbnails/*", 
+    ".mozilla/*/Cache/*",
+    ".chromium/*/Cache/*",
+    ".firefox/*/Cache/*",
+    ".steam/*",
+    "lost+found/*",
+    ".snapshots/*",
+    "*.iso", "*.img", "*.vmdk"
+  ],
+  "max_depth": 20,
+  "batch_size": 500,
+  "log_level": "INFO",
+  "stats_interval": 1800,
+  "exclude_directories": [
+    "/proc", "/sys", "/dev", "/run", "/tmp",
+    "/var/cache", "/var/tmp"
+  ]
+}
