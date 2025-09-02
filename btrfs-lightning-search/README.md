@@ -144,8 +144,6 @@ sudo systemctl status btrfs-indexer
 
 # Interactive commands:
 # - Type search terms
-# - Use Up/Down arrows for history  
-# - Tab completion for paths
 # - /help for commands
 # - /stats for database statistics
 # - /quit to exit
