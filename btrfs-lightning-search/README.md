@@ -54,6 +54,10 @@ sudo dnf install python3 python3-pyinotify gcc
 git clone https://github.com/Lord-Deepankar/Coding.git
 cd btrfs-lightning-search  #if this doesn't work then do,  "cd Coding" then "cd btrfs-lightning-search"
 
+# If scripts don't run then make sure they are executable, do this com,
+# chmod +x <script.sh>
+
+
 # Run installation script
 sudo ./install.sh
 
@@ -62,6 +66,23 @@ sudo ./setup.sh
 
 # Start searching!
 ./search.py document.txt
+
+# NEW UPDATE!!
+ 
+# search times are now 10-100ms
+ 
+# Pre_warm the cache and load whole database into memory
+chmod +x setup_python_sevice.sh
+
+sudo ./setup_python_sevice.sh warm_cache.py
+
+# Start searching !!
+./search_optimized.py document.txt
+
+
+# More detailed search script 
+
+
 ```
 
 ## 🏗️ Manual Installation
