@@ -1,6 +1,6 @@
 {
   "watch_paths": [
-    "/home/xero"
+    "/home/USER_HOME"
   ],
   "database_path": "file_index.db",
   "exclude_patterns": [

@@ -7,8 +7,8 @@ After=network.target
 Type=simple
 User=root
 Group=root
-WorkingDirectory=/home/xero/Documents/Dict_project/btrfs_file_searcher
-ExecStart=/usr/bin/python3 /home/xero/Documents/Dict_project/btrfs_file_searcher/inotify_daemon.py
+WorkingDirectory=/usr/local/share/btrfs-lightning-search
+ExecStart=/usr/bin/python3 /usr/local/share/btrfs-lightning-search/inotify_daemon.py
 Restart=always
 RestartSec=10
 
@@ -16,7 +16,7 @@ RestartSec=10
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=read-only
-ReadWritePaths=/home/xero/Documents/Dict_project/btrfs_file_searcher
+ReadWritePaths=/home/USER_HOME/.local/share/btrfs-search
 
 # Environment
 Environment=PYTHONUNBUFFERED=1
