@@ -15,7 +15,7 @@
       const data = await response.json();
       return data || 0;
     } catch (error) {
-      console.error('Error getting vote count:', error);
+      // Silent fail for production
       return 0;
     }
   }
@@ -44,7 +44,7 @@
       }
       return newCount;
     } catch (error) {
-      console.error('Error incrementing vote:', error);
+      // Silent fail for production
       return null;
     }
   }
@@ -71,7 +71,7 @@
 
       return false;
     } catch (error) {
-      console.error('Error checking safe URL list:', error);
+      // Silent fail for production
       return false;
     }
   }
