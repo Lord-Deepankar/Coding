@@ -3,11 +3,11 @@
   "name": "PhishingGuard",
   "version": "1.0",
   "description": "Detects phishing login pages.",
-  "permissions": ["scripting", "activeTab", "storage"],
+  "permissions": [
+    "storage"
+  ],
   "host_permissions": [
-    "https://*.firebaseio.com/*", 
-    "https://*.googleapis.com/*",
-    "https://www.gstatic.com/*"
+    "https://phishingguard-508b0-default-rtdb.firebaseio.com/*"
   ],
   "background": {
     "service_worker": "background.js"
@@ -21,16 +21,10 @@
       "js": ["content.js"]
     }
   ],
-  "action": {
-    "default_title": "PhishingGuard"
-  },
   "web_accessible_resources": [
     {
       "resources": ["popup/warning.html"],
       "matches": ["<all_urls>"]
     }
-  ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+  ]
 }
