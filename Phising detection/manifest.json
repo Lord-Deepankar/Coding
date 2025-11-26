@@ -9,22 +9,27 @@
   "host_permissions": [
     "https://phishingguard-508b0-default-rtdb.firebaseio.com/*"
   ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "icons": {
     "128": "icons/icon.png"
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["popup/warning.html"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "popup/warning.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }
