@@ -55,7 +55,7 @@
       let response = await fetch(`${databaseURL}/safeUrls/${sanitizedFullUrlKey}.json`, { credentials: 'omit' });
       if ((await response.json()) !== null) return true;
 
-      const hostname = new URL(url).hostname;
+      const {hostname} = new URL(url);
 
       const sanitizedHostnameKey = hostname.replace(/[.#$[\]]/g, '_');
       response = await fetch(`${databaseURL}/safeUrls/${sanitizedHostnameKey}.json`, { credentials: 'omit' });
