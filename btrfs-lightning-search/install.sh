@@ -163,7 +163,8 @@ install_files() {
     
     # Install Python scripts
     cp "$CURRENT_DIR/indexer.py" "$PREFIX/lib/btrfs-search/"
-    cp "$CURRENT_DIR/search.py" "$PREFIX/lib/btrfs-search/"
+    cp "$CURRENT_DIR/search_optimized.py" "$PREFIX/lib/btrfs-search/"
+    cp "$CURRENT_DIR/warm_cache.py" "$PREFIX/lib/btrfs-search/"
     cp "$CURRENT_DIR/inotify_daemon.py" "$PREFIX/lib/btrfs-search/"
     cp "$CURRENT_DIR/setup.sh" "$PREFIX/lib/btrfs-search/"
     chmod 755 "$PREFIX/lib/btrfs-search/"*.py
@@ -173,7 +174,7 @@ install_files() {
     # Create wrapper scripts in /usr/local/bin
     cat > "$PREFIX/bin/btrfs-search" << 'EOF'
 #!/bin/bash
-exec python3 /usr/local/lib/btrfs-search/search.py "$@"
+exec python3 /usr/local/lib/btrfs-search/search_optimized.py "$@"
 EOF
     chmod 755 "$PREFIX/bin/btrfs-search"
     print_status "Created btrfs-search command"
@@ -205,7 +206,8 @@ install_service() {
         
         # Update service file with correct paths
         sed "s|WorkingDirectory=.*|WorkingDirectory=$PREFIX/lib/btrfs-search|g; \
-             s|ExecStart=.*|ExecStart=/usr/bin/python3 $PREFIX/lib/btrfs-search/inotify_daemon.py /etc/btrfs-search/inotify_config.json|g" \
+             s|ExecStart=.*|ExecStart=/usr/bin/python3 $PREFIX/lib/btrfs-search/inotify_daemon.py /etc/btrfs-search/inotify_config.json|g; \
+             s|/home/USER_HOME|$REAL_HOME|g" \
              "$CURRENT_DIR/btrfs-indexer.service" > "/etc/systemd/system/btrfs-indexer.service"
         
         systemctl daemon-reload

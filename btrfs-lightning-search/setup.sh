@@ -24,8 +24,8 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Check if btrfs-indexer exists
-if [ ! -f "./btrfs-indexer" ]; then
-    echo "Error: btrfs-indexer binary not found in current directory"
+if ! command -v btrfs-indexer &> /dev/null; then
+    echo "Error: btrfs-indexer binary not found in PATH"
     echo "Please compile it first: gcc -o btrfs-indexer btrfs-indexer.c"
     exit 1
 fi
@@ -41,7 +41,7 @@ echo "Step 1: Extracting Btrfs metadata..."
 echo "This may take a while for large filesystems..."
 start_time=$(date +%s)
 
-if ! ./btrfs-indexer "$BTRFS_MOUNT" > "$JSON_FILE"; then
+if ! btrfs-indexer "$BTRFS_MOUNT" > "$JSON_FILE"; then
     echo "Error: Failed to extract Btrfs metadata"
     exit 1
 fi
